@@ -47,14 +47,14 @@ t3 = t3*1e6; % Convert to us
 
 % Plot
 figure(1); clf; hold on;
-errorbar(N,mean(t1,2),std(t1,[],2));
-errorbar(N,mean(t2,2),std(t2,[],2));
-errorbar(N,mean(t3,2),std(t3,[],2));
+errorbar(N,mean(t1,2),std(t1,[],2),'DisplayName','Matalb''s polyfit');
+errorbar(N,mean(t2,2),std(t2,[],2),'DisplayName','polyfit\_fast');
+errorbar(N,mean(t3,2),std(t3,[],2),'DisplayName','polyfit\_fast + Vandermode');
 xlim([min(N) max(N)]); ylim([1e0 1e6]);
 grid on; box on; axis square;
 a = gca; a.XScale = 'log'; a.YScale = 'log';
 xlabel('input size (N)');
 ylabel('time / us');
-
+legend('location','northwest');
 title(sprintf('Fitting degree %d polynomial to random input',n))
     

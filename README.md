@@ -15,3 +15,5 @@ Note that teh `poly_fast` functions do not implement the alternate scale-and-shi
 ## Weighted fit
 
 Additionally a `polyfit_weighted` function can perform a weighted least-squares fit in a similar manner to `polyfit_fast`.
+
+## Performance
