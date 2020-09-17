@@ -4,12 +4,14 @@ close all; clear; clc;
 % loops. An example use case here is going through each time-slice through
 % a stack of images.
 
-%% Make up a stack of images (Perlin noise)
+%% Make up a stack of images (Perlin-like noise)
 % Based on https://stackoverflow.com/a/12971365/2531987
 N = 7; im = randn(2^N,2^N,2^(N+1)); % 2^N x 2^N x 2^(N+1)
 for j = 2:N
     s = 2^(N-j+1); % New layer size, 64, 32, 16, etc...
-    nl = interp3(randn(s+1,s+1,(2*s)+1),(j-1),'spline'); % New upsampled layer
+    
+    % Add new upsampled layer
+    nl = interp3(randn(s+1,s+1,(2*s)+1),(j-1),'spline'); % 'nearest' is also cool
     nl = nl(1:end-1,1:end-1,1:end-1);
     im = im + j*nl;
 end
@@ -24,7 +26,7 @@ zlim([-1 1]*40);
 for j = 2:size(D,3)
     if ~f.isvalid, break; end
     a.Children.CData = D(:,:,j); title(sprintf('frame %03d',j));
-    drawnow; pause(0.05);
+    drawnow; pause(0.01);
 end
 
 %% Smooth the motion by replacing each slice through time with a polynomial approximation
@@ -57,7 +59,7 @@ zlim([-1 1]*40);
 for j = 2:size(D,3)
     if ~f.isvalid, break; end
     a.Children.CData = D(:,:,j); title(sprintf('frame %03d',j));
-    drawnow; pause(0.05);
+    drawnow; pause(0.01);
 end
 
 %% Same procedure, but with polyfit_fast and polyval_fast
