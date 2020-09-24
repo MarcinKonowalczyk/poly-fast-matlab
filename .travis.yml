@@ -9,13 +9,13 @@ jobs:
 before_script:
   - which matlab # Print matlab path (for debugging)
   - git clone https://github.com/MOxUnit/MOxUnit.git # Get MOxUnit
-  - matlab -nojvm -nodisplay -nosplash -nodesktop -wait -r "back=cd('./MOxUnit/MOxUnit/');moxunit_set_path();cd(back);savepath();exit(0)"
+  #- matlab -nojvm -nodisplay -nosplash -nodesktop -wait -r "back=cd('./MOxUnit/MOxUnit/');moxunit_set_path();cd(back);savepath();exit(0)"
   #- make -C MOxUnit install
   #- matlab -nojvm -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "disp(path); exit()" # Dump internal matlab path (just to see)
   #- cat output.log
   #- rm -f output.log
 
 script: 
-  #- matlab -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "back = cd('./MOxUnit/MOxUnit/'); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit()"
-  - matlab -nojvm -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "moxunit_runtests tests -verbose; exit()"
+  - matlab -nojvm -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "back = cd('./MOxUnit/MOxUnit/'); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit()"
+  #- matlab -nojvm -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "moxunit_runtests tests -verbose; exit()"
   - cat output.log
