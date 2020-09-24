@@ -1,17 +1,15 @@
 language: matlab
 matlab:
-  - R2014b # <- Earliest which ought to be supported
+  #- R2014b # <- Earliest which ought to be supported
   - R2017b # <- Developped on this varsion
-  - latest
+  #- latest
 
 before_script:
   - git clone https://github.com/MOxUnit/MOxUnit.git # Get MOxUnit
-  - cd MOxUnit
-  - make install
-  - cd ..
-  - matlab -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "disp(path); exit()" # Dump maltab path (just to see)
-  - cat output.log
-  - rm -f output.log
+  - make -C MOxUnit install
+  #- matlab -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "disp(path); exit()" # Dump maltab path (just to see)
+  #- cat output.log
+  #- rm -f output.log
 
 script: 
   #- matlab -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "back = cd('./MOxUnit/MOxUnit/'); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit()"
