@@ -16,6 +16,8 @@ before_script:
   #- rm -f output.log
 
 script: 
-  - matlab -nojvm -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "back = cd('./MOxUnit/MOxUnit/'); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit()"
+  #- matlab -nojvm -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "back=cd('./MOxUnit/MOxUnit/'); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit()"
+  - matlab -batch 'disp("Hello World")'
+  - matlab -batch -wait -logfile output.log -r "back=cd('./MOxUnit/MOxUnit/'); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit()"
   #- matlab -nojvm -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "moxunit_runtests tests -verbose; exit()"
   - cat output.log
