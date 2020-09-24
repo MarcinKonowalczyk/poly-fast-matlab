@@ -20,4 +20,3 @@ script:
   #- matlab -batch 'disp("Hello World")'
   - matlab -batch 'back=cd("./MOxUnit/MOxUnit/"); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit(double(~ans))'
   #- matlab -nojvm -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "moxunit_runtests tests -verbose; exit()"
-  - cat output.log
