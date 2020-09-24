@@ -5,6 +5,7 @@ matlab:
   #- latest
 
 before_script:
+  - which matlab
   - git clone https://github.com/MOxUnit/MOxUnit.git # Get MOxUnit
   - make -C MOxUnit install
   #- matlab -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "disp(path); exit()" # Dump maltab path (just to see)
@@ -12,6 +13,6 @@ before_script:
   #- rm -f output.log
 
 script: 
-  #- matlab -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "back = cd('./MOxUnit/MOxUnit/'); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit()"
-  - matlab -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "moxunit_runtests tests -verbose; exit()"
+  - matlab -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "back = cd('./MOxUnit/MOxUnit/'); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit()"
+  #- matlab -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "moxunit_runtests tests -verbose; exit()"
   - cat output.log
