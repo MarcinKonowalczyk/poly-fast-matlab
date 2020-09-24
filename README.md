@@ -1,4 +1,4 @@
-# poly-fast-matlab
+# poly-fast-matlab [![Build Status](https://travis-ci.org/MarcinKonowalczyk/poly-fast-matlab.svg?branch=master)](https://travis-ci.org/MarcinKonowalczyk/poly-fast-matlab)
 
 Fast versions of Matlab's `polyval` and `polyfit` for sane people.
 
