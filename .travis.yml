@@ -1,8 +1,11 @@
 language: matlab
+os:
+  - osx
+  - windows
 matlab:
   #- R2014b # <- Earliest which ought to be supported
   - R2017b # <- Developped on this varsion
-  #- latest
+  - R2020a
 
 before_script:
   - which matlab # Print matlab path (for debugging)
