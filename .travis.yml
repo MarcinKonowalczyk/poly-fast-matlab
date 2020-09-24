@@ -11,4 +11,4 @@ before_script:
   - git clone https://github.com/MOxUnit/MOxUnit.git # Get MOxUnit
 
 script: 
-  - matlab -batch 'disp(path); back=cd("./MOxUnit/MOxUnit/"); moxunit_set_path(); cd(back); result=moxunit_runtests("tests","-verbose"); exit(double(~result))'
+  - matlab -batch 'back=cd("./MOxUnit/MOxUnit/"); moxunit_set_path(); cd(back); result=moxunit_runtests("tests","-verbose"); exit(double(~result))'

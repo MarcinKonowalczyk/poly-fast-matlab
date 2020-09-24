@@ -32,7 +32,7 @@ function test_skipping
     moxunit_throw_test_skipped_exception('Pumpkins!')
 end
 
-%{
+%
 function test_failure
     assertFalse(true)
 end
