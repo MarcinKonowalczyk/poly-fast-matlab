@@ -1,17 +1,17 @@
-language: matlab
-os:
-  - osx
-  - windows
-matlab:
-  #- R2014b # <- Earliest which ought to be supported
-  - R2017b # <- Developped on this varsion
-  - R2020a
+jobs:
+  include:
+    # Developped on R2017b, ought to work back to at least R2014b,
+    # but travis only supports matlab R2020a, and only on linux
+    - language: matlab
+      matlab: R2020a
+      os: linux
+
 
 before_script:
   - which matlab # Print matlab path (for debugging)
   - git clone https://github.com/MOxUnit/MOxUnit.git # Get MOxUnit
-  - matlab -nojvm -nodisplay -nosplash -nodesktop -wait -r "back=cd('./MOxUnit/MOxUnit/');moxunit_set_path();cd(back);savepath();exit(0)"
-  #- make -C MOxUnit install
+  #- matlab -nojvm -nodisplay -nosplash -nodesktop -wait -r "back=cd('./MOxUnit/MOxUnit/');moxunit_set_path();cd(back);savepath();exit(0)"
+  - make -C MOxUnit install
   #- matlab -nojvm -nodisplay -nosplash -nodesktop -wait -logfile output.log -r "disp(path); exit()" # Dump maltab path (just to see)
   #- cat output.log
   #- rm -f output.log
