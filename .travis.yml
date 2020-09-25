@@ -25,10 +25,13 @@ matrix:
       
       before_install:
         - docker pull mtmiller/octave:${OCTAVE_VERSION}
-        - docker run mtmiller/octave:${OCTAVE_VERSION} octave --eval "ver"
+        - docker run mtmiller/octave:${OCTAVE_VERSION} octave --no-gui --quiet --eval "ver"
       
       before_script:
         - git clone https://github.com/MOxUnit/MOxUnit.git # Get MOxUnit
+        #- make -C MOxUnit install
 
       script:
-        - docker run -it mtmiller/octave:${OCTAVE_VERSION} octave --no-gui --quiet --eval 'back=cd("./MOxUnit/MOxUnit/"); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit(double(~ans))'
+        #- docker run -it mtmiller/octave:${OCTAVE_VERSION} octave --no-gui --quiet --eval 'back=cd("./MOxUnit/MOxUnit/"); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit(double(~ans))'
+        - ls
+        - docker run -it mtmiller/octave:${OCTAVE_VERSION} octave --no-gui --quiet --eval "ls;"
