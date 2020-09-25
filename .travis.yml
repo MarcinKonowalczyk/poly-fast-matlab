@@ -28,7 +28,7 @@ matrix:
         - docker run mtmiller/octave:${OCTAVE_VERSION} octave --eval "ver"
       
       before_script:
-        - which matlab # Print matlab path (for debugging)
         - git clone https://github.com/MOxUnit/MOxUnit.git # Get MOxUnit
+
       script:
         - docker run -it mtmiller/octave:${OCTAVE_VERSION} octave --no-gui --quiet --eval 'back=cd("./MOxUnit/MOxUnit/"); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit(double(~ans))'
