@@ -18,8 +18,8 @@ Additionally a `polyfit_weighted` function can perform a weighted least-squares 
 
 ## Performance
 
-![Benchmark degree 1](./benchmark_1.png)
-![Benchmark degree 10](./benchmark_10.png)
+<p align="center"><img src="./figures/benchmark_1.png" width="75%"></p>
+<p align="center"><img src="./figures/benchmark_10.png" width="75%"></p>
 
 ## ToDo's
 
