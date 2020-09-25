@@ -18,8 +18,10 @@ Additionally a `polyfit_weighted` function can perform a weighted least-squares 
 
 ## Performance
 
+For large input size (N), `polyfit_fast` scales approx. as $O(N^{1.1})$ (just like normal `polyfit`). For N less than approx. 1e4, `polyfit_fast` is about 2 orders of magnitude faster than `polyfit`.
+
 <p align="center"><img src="./figures/benchmark_1.png" width="75%"></p>
-<p align="center"><img src="./figures/benchmark_10.png" width="75%"></p>
+<p align="center"><img src="./figures/benchmark_9.png" width="75%"></p>
 
 ## ToDo's
 
