@@ -1,4 +1,4 @@
-# poly-fast-matlab [![Build Status](https://travis-ci.org/MarcinKonowalczyk/poly-fast-matlab.svg?branch=master)](https://travis-ci.org/MarcinKonowalczyk/poly-fast-matlab)
+# poly-fast-matlab [![View poly-fast-matlab on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://uk.mathworks.com/matlabcentral/fileexchange/80494-poly-fast-matlab) [![Build Status](https://travis-ci.org/MarcinKonowalczyk/poly-fast-matlab.svg?branch=master)](https://travis-ci.org/MarcinKonowalczyk/poly-fast-matlab)
 
 Fast versions of Matlab's `polyval` and `polyfit` for sane people.
 
@@ -6,11 +6,18 @@ Fast versions of Matlab's `polyval` and `polyfit` for sane people.
 
 Original `poly` functions are very good and useful, but they do a lot of not-always-necessary work (matrix condition checking), especially when one is in the middle of a tight `for`-loop. `poly_fast` functions do not do these checks, but assume the user is sane and knows what they're doing. It is recommended to **first** write one's code with normal `poly` functions, and then switch to the `poly_fast` once the code works fine. This can be done by simply replacing the calls to `polyfit` and `polyval` with ones to `polyfit_fast` and `polyval_fast`.
 
-Note that teh `poly_fast` functions do not implement the alternate scale-and-shift syntax - `[p,S,mu] = polyfit(x,y,n)`. You'll have to do that yourself.
+```matlab
+x = linspace(-1,1,1e2); y = randn*x + randn(size(x));
+P = polyfit_fast(x,y,1);
+plot(x,y,'o',x,polyval_fast(P,x));
+```
+
+Note that the `poly_fast` functions do not implement the alternate scale-and-shift syntax - `[p,S,mu] = polyfit(x,y,n)`. You'll have to do that yourself.
 
 ## Reusing the Vandermode matrix
 
 `polyfit` works by inverting the [Vandermode matrix](https://mathworld.wolfram.com/VandermondeMatrix.html) - matrix who's columns are successive powers of the x-axis. It it relatively fast, but unnecessary, to construct it each time. This becomes a bit of a bottleneck especially for dense x-axis or high-degree polynomials. To mitigate this, `poly_fast` functions both output, and take the Vandermode matrix as an input. This allows it to be re-used, but results in a more significant code rewrite. See `example.m` for detail.
+
 
 ## Weighted fit
 
