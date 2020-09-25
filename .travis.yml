@@ -1,14 +1,34 @@
-jobs:
+matrix:
   include:
     # Developped on R2017b, ought to work back to at least R2014b,
     # but travis only supports matlab R2020a, and only on linux
     - language: matlab
       matlab: R2020a
       os: linux
+      
+      before_script:
+        - which matlab # Print matlab path (for debugging)
+        - git clone https://github.com/MOxUnit/MOxUnit.git # Get MOxUnit
+      
+      script: 
+        - matlab -batch 'back=cd("./MOxUnit/MOxUnit/"); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit(double(~ans))'
 
-before_script:
-  - which matlab # Print matlab path (for debugging)
-  - git clone https://github.com/MOxUnit/MOxUnit.git # Get MOxUnit
-
-script: 
-  - matlab -batch 'back=cd("./MOxUnit/MOxUnit/"); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit(double(~ans))'
+    # Based on https://github.com/mtmiller/octave-travis-ci-example
+    - language: generic
+      os: linux
+      services: docker
+      
+      env:
+        - OCTAVE_VERSION=4.2
+        #- OCTAVE_VERSION=4.4
+        #- OCTAVE_VERSION=5
+      
+      before_install:
+        - docker pull mtmiller/octave:${OCTAVE_VERSION}
+        - docker run mtmiller/octave:${OCTAVE_VERSION} octave --eval "ver"
+      
+      before_script:
+        - which matlab # Print matlab path (for debugging)
+        - git clone https://github.com/MOxUnit/MOxUnit.git # Get MOxUnit
+      script:
+        - docker run -it mtmiller/octave:${OCTAVE_VERSION} octave --no-gui --quiet --eval 'back=cd("./MOxUnit/MOxUnit/"); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit(double(~ans))'
