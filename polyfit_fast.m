@@ -9,7 +9,7 @@ y = y(:);
 
 if isvector(x)
     x = x(:);
-    V = zeros(length(x),n+1,'like',x);
+    V = zeros(length(x),n+1,class(x));
     V(:,n+1) = 1;
     for j = n:-1:1
        V(:,j) = x.*V(:,j+1);

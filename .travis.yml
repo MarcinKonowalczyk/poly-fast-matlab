@@ -6,30 +6,24 @@ matrix:
       matlab: R2020a
       os: linux
       
+      # Just clone MOxUnit, dont make install it
       before_script:
-        - which matlab # Print matlab path (for debugging)
-        - git clone https://github.com/MOxUnit/MOxUnit.git # Get MOxUnit
+        - git clone https://github.com/MOxUnit/MOxUnit.git
       
       script: 
         - matlab -batch 'back=cd("./MOxUnit/MOxUnit/"); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit(double(~ans))'
 
-    # Based on https://github.com/mtmiller/octave-travis-ci-example
     - language: generic
       os: linux
-      services: docker
       
-      env:
-        - OCTAVE_VERSION=4.2
-        #- OCTAVE_VERSION=4.4
-        #- OCTAVE_VERSION=5
-      
-      before_script:
+      # Get Octave
+      before_install:
         - sudo apt-get install octave
-        - git clone https://github.com/MOxUnit/MOxUnit.git # Get MOxUnit
+
+      # Clone and install MOxUnit
+      before_script:
+        - git clone https://github.com/MOxUnit/MOxUnit.git
         - make -C MOxUnit install
 
       script:        
-        - ls
-        - octave --no-gui --quiet --eval "ls;"
-        #- octave --no-gui --quiet --eval 'back=cd("./MOxUnit/MOxUnit/"); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit(double(~ans))'
         - octave --no-gui --quiet --eval 'moxunit_runtests tests -verbose; exit(double(~ans))'

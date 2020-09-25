@@ -14,7 +14,7 @@ if isvector(x)
     n = numel(p)-1;
 
     % Construct Vandermonde matrix
-    V = zeros(length(x),n+1,'like',x);
+    V = zeros(length(x),n+1,class(x));
     %V(:,n+1) = ones(length(x),1,class(x));
     V(:,n+1) = 1;
     for j = n:-1:1

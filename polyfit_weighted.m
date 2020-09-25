@@ -11,7 +11,7 @@ y = y(:);
 % Construct Vandermonde matrix
 if isvector(x)
     x = x(:); nx = length(x);
-    V = zeros(nx,n+1,'like',x);
+    V = zeros(nx,n+1,class(x));
     %V(:,n+1) = ones(length(x),1,class(x));
     V(:,n+1) = 1;
     for j = n:-1:1
