@@ -1,6 +1,7 @@
 function [p,V,W] = polyfit_weighted(x,y,w,n)
 %% [p,V,W] = polyfit_weighted(x,y,w,n)
-% Fit n'th degree polynomial to x,y data without any condition checks
+% Fit n'th degree polynomial to weighted x,y data without any condition
+% checks
 %
 % Written by Marcin Konowalczyk
 % Timmel Group @ Oxford University
