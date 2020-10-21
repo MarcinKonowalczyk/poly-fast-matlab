@@ -13,7 +13,7 @@ matrix:
       script: 
         - matlab -batch 'back=cd("./MOxUnit/MOxUnit/"); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit(double(~ans))'
 
-    - language: generic
+    - language: minimal
       os: linux
       
       # Get Octave
