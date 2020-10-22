@@ -1,10 +1,12 @@
+language: minimal
+os: linux
+
 matrix:
   include:
     # Developped on R2017b, ought to work back to at least R2014b,
     # but travis only supports matlab R2020a, and only on linux
     - language: matlab
       matlab: R2020a
-      os: linux
       
       # Just clone MOxUnit, dont make install it
       before_script:
@@ -14,8 +16,7 @@ matrix:
         - matlab -batch 'back=cd("./MOxUnit/MOxUnit/"); moxunit_set_path(); cd(back); moxunit_runtests tests -verbose; exit(double(~ans))'
 
     - language: minimal
-      os: linux
-      
+
       # Get Octave
       before_install:
         - sudo apt-get install octave
