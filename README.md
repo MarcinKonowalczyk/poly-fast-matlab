@@ -1,4 +1,4 @@
-# poly-fast-matlab [![View poly-fast-matlab on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://uk.mathworks.com/matlabcentral/fileexchange/80494-poly-fast-matlab) [![Build Status](https://travis-ci.org/MarcinKonowalczyk/poly-fast-matlab.svg?branch=master)](https://travis-ci.org/MarcinKonowalczyk/poly-fast-matlab)
+# poly-fast-matlab [![View poly-fast-matlab on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://uk.mathworks.com/matlabcentral/fileexchange/80494-poly-fast-matlab) [![Build Status](https://travis-ci.com/MarcinKonowalczyk/poly-fast-matlab.svg?branch=master)](https://travis-ci.com/MarcinKonowalczyk/poly-fast-matlab)
 
 Fast versions of Matlab's `polyval` and `polyfit` for sane people.
 
